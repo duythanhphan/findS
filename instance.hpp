@@ -12,10 +12,12 @@
 namespace mhlzol004{
 	class instance{
 		public:
-			instance(std::string line);
+			instance(std::string line, int somevalue);
 			instance(instance& someotherinstance);
-			
 			std::vector<std::string> tokens;
+			std::string& operator[](int i){
+				return tokens[i];
+			}
 	};
 }
 #endif

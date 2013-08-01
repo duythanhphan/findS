@@ -9,8 +9,11 @@
 using namespace mhlzol004;
 #include<sstream>
 #include<iostream>
-instance::instance(std::string line){
+instance::instance(std::string line, int somevalue){
 	using namespace std;
+	if (somevalue == 1){
+		line = "null null null null null null null null";
+	}
 	stringstream ss(line);
 	int i = 0;
 	string token;
@@ -23,4 +26,7 @@ instance::instance(std::string line){
 			++i;
 		}
 	}
+}
+instance::instance(instance& smoeinstance){
+	std::cout << "instance copied" << std::endl;
 }
