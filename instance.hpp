@@ -18,6 +18,9 @@ namespace mhlzol004{
 			std::string& operator[](int i){
 				return tokens[i];
 			}
+			int size();
+			static std::string _positive;
+			static std::string _negative;
 	};
 }
 #endif

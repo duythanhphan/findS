@@ -24,20 +24,26 @@ int main(int argc, char** argv){
 		string filename =  *(++argv);
 		ifstream datafile(filename.c_str());
 		string line;
-
+		
+		cout << "\t===Problem One===" << endl;
+		//setting the positive and negative identifier
+		instance::_positive = std::string("Yes");
+		instance::_negative = std::string("No");
 		//general hypothesis
 		instance gen_hypothesis(std::string("random text"),1);
-		cout << gen_hypothesis << endl;		
 
 		while(!datafile.eof()){
 			getline(datafile,line);
 			if (!line.empty()){
-				cout << "line: "<< line << endl;
+				cout << "instance: "<< line << endl;
 				instance in(line,0);
 				specialize(gen_hypothesis, in);
 				cout << "hypothesis: " << gen_hypothesis << endl;
+				cout << endl;
 			}
 		}
+		
+		cout << "\t===Problem Two===" << endl;
 	}
 	else{
 		cout << "too many argurments." << endl;
@@ -48,21 +54,21 @@ int main(int argc, char** argv){
 std::ostream& operator<<(std::ostream& somestream, instance& someinstance){
 	int size = someinstance.tokens.size();
 	somestream << "<" ;
-	for (int i=0; i<size ; ++i){
+	for (int i=0; i<size-1 ; ++i){
 		somestream << someinstance.tokens[i] << " ";
 	}
 	somestream << ">";
 }
 void specialize(instance& gen_hypothesis, instance& someinstance){
-	instance tmp(std::string("other random text"), 1);
-	for (int i=0; i<7; ++i){
-		if (gen_hypothesis[i].compare(std::string("?")) == 0){
-			std::cout << "smethig matters" << std::endl;	
-		}
-		if (gen_hypothesis[i].compare(std::string("null")) == 0){
-			gen_hypothesis[i] = someinstance[i];
-			std::cout << "something is null" << std::endl;
-			std::cout << gen_hypothesis << std::endl;
+	int size = someinstance.size();
+	if (someinstance[6].compare(instance::_positive)== 0){
+		for (int i=0; i<size-1; ++i){
+			if (gen_hypothesis[i].compare(std::string("null")) == 0){
+				gen_hypothesis[i] = someinstance[i];
+			}
+			else if ((someinstance[i].compare(std::string("?"))==0) || (someinstance[i].compare(gen_hypothesis[i]) != 0)){
+				gen_hypothesis[i] = std::string("?");
+			}
 		}
 	}
 }

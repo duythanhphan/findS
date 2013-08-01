@@ -3,7 +3,7 @@ com = g++
 src = main.cpp instance.cpp
 obj = instance.o
 $(app_name):$(src) $(obj)
-	@$(com) -o $(app_name) $(src)
+	@$(com) $(obj) main.cpp -o $(app_name) 
 instance.o: instance.hpp instance.cpp
 	@$(com) -c instance.cpp
 clean:

@@ -9,6 +9,8 @@
 using namespace mhlzol004;
 #include<sstream>
 #include<iostream>
+std::string instance::_positive(std::string("1"));
+std::string instance::_negative(std::string("0"));
 instance::instance(std::string line, int somevalue){
 	using namespace std;
 	if (somevalue == 1){
@@ -29,4 +31,7 @@ instance::instance(std::string line, int somevalue){
 }
 instance::instance(instance& smoeinstance){
 	std::cout << "instance copied" << std::endl;
+}
+int instance::size(){
+	return tokens.size();
 }
