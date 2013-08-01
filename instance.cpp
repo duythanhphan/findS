@@ -11,9 +11,16 @@ using namespace mhlzol004;
 #include<iostream>
 instance::instance(std::string line){
 	using namespace std;
-	string token;
 	stringstream ss(line);
-	while(getline(ss, token, ',')){
-		cout << token << endl;
+	int i = 0;
+	string token;
+	while(!ss.eof()){
+		ss >> token;
+		if (i!=0){
+			tokens.push_back(token);	
+		}
+		else if (i==0){
+			++i;
+		}
 	}
 }

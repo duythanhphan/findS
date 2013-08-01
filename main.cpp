@@ -8,6 +8,8 @@
 #include<iostream>
 #include<string>
 #include<fstream>
+#include "instance.hpp"
+using namespace mhlzol004;
 int main(int argc, char** argv){
 	using namespace std;
 	if (argc<2){

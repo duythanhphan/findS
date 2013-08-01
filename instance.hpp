@@ -14,9 +14,8 @@ namespace mhlzol004{
 		public:
 			instance(std::string line);
 			instance(instance& someotherinstance);
-			~instance();
 			
-			std::vector<std::string> components;
+			std::vector<std::string> tokens;
 	};
 }
 #endif
