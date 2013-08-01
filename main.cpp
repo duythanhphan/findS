@@ -21,7 +21,8 @@ int main(int argc, char** argv){
 		while(!datafile.eof()){
 			getline(datafile,line);
 			if (!line.empty()){
-				cout << line << endl;
+				cout << "line: "<< line << endl;
+				instance in(line);
 			}
 		}
 	}
