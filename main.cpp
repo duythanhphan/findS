@@ -13,6 +13,11 @@
 using namespace mhlzol004;
 std::ostream& operator<<(std::ostream& somestream, instance& someinstance);
 void specialize(instance& gen_hypothesis, instance& someinstance);
+
+//concept that needs to be learned for part two
+instance concept(std::string("1 Sunny Warm ? ? ?"), 0);
+volatile int bit = 0;	//if examples for learning concept known. 1 known, 0 unknown
+volatile int count = 0; //number of examples needed to learn concept
 int main(int argc, char** argv){
 	
 	using namespace std;
@@ -44,6 +49,11 @@ int main(int argc, char** argv){
 		}
 		
 		cout << "\t===Problem Two===" << endl;
+		if (bit == 1){
+			cout << "Number of examples needed: "<< count<< endl;
+		}else{
+			cout << "Number of examples needed to learn concept unknown"<<endl;
+		}
 	}
 	else{
 		cout << "too many argurments." << endl;
@@ -70,5 +80,11 @@ void specialize(instance& gen_hypothesis, instance& someinstance){
 				gen_hypothesis[i] = std::string("?");
 			}
 		}
+	}
+	if (gen_hypothesis!=concept){
+		++count;
+	}
+	else{
+		bit = 1;
 	}
 }
